@@ -67,6 +67,7 @@ export default function MoodsPage() {
     if (!user) return;
     fetchMoods();
   }, [user]);
+  
 
   if (!user) {
       return <Navigate to="/login" replace />;
