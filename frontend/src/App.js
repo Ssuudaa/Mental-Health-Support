@@ -3,19 +3,39 @@ import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
-import Tasks from './pages/Tasks';
+import Dashboard from './pages/Dashboard';
+import Bookings from './pages/Bookings';
+import Moods from './pages/Moods';
+import NotFound from './pages/Notfound';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
-      <Navbar />
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/tasks" element={<Tasks />} />
+
+        <Route path="*" element={<NotFound />} />
+
+        <Route element={<LayoutWithNavbar />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/bookings" element={<Bookings />} />
+          <Route path="/moods" element={<Moods />} />
+        </Route>
+
       </Routes>
     </Router>
+  );
+}
+
+function LayoutWithNavbar() {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
   );
 }
 
