@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axiosInstance from '../axiosConfig';
+import { Navigate } from "react-router-dom";
 
 const Profile = () => {
   const { user } = useAuth(); // Access user token from context
@@ -54,6 +55,10 @@ const Profile = () => {
   if (loading) {
     return <div className="text-center mt-20">Loading...</div>;
   }
+
+  if (!user) {
+      return <Navigate to="/login" replace />;
+    }
 
   return (
     <div className="max-w-md mx-auto mt-20">
