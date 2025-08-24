@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import Bookings from './pages/Bookings';
 import Moods from './pages/Moods';
 import NotFound from './pages/Notfound';
+import Welcome from './pages/Welcome';
 import { Outlet } from 'react-router-dom';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
         <Route element={<LayoutWithNavbar />}>
+          <Route path="/" element={<Welcome />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />

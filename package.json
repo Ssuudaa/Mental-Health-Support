@@ -13,5 +13,9 @@
     "mocha": "^11.0.1"
   },
   "author": "Task Manager Team",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "framer-motion": "^10.18.0",
+    "lucide-react": "^0.541.0"
+  }
 }

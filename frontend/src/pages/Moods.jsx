@@ -67,11 +67,10 @@ export default function MoodsPage() {
     if (!user) return;
     fetchMoods();
   }, [user]);
-  
 
   if (!user) {
-      return <Navigate to="/login" replace />;
-    }
+    return <Navigate to="/login" replace />;
+  }
 
   const last7Days = dayjs().subtract(6, 'day');
   const recentMoods = moods
@@ -85,17 +84,40 @@ export default function MoodsPage() {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-start py-10 px-4 bg-gradient-to-br from-blue-50 to-blue-100">
+    <div
+      className="min-h-screen w-full flex justify-center items-start py-10 px-4"
+      style={{
+        background:
+          "radial-gradient(1200px 600px at 10% 10%, rgba(99,102,241,0.15), transparent), radial-gradient(1200px 600px at 90% 30%, rgba(16,185,129,0.16), transparent), linear-gradient(180deg, #F8FAFC 0%, #EEF2FF 100%)",
+      }}
+    >
       <div className="flex w-full max-w-4xl gap-6">
+        {/* Recent moods card */}
         <Card
-          style={{ flex: 1, backdropFilter: "blur(10px)", backgroundColor: "rgba(255,255,255,0.7)" }}
+          style={{
+            flex: 1,
+            borderRadius: "16px",
+            background: "rgba(255,255,255,0.3)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(255,255,255,0.4)",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.08)"
+          }}
           bordered={false}
         >
           <Title level={4} className="text-center mb-4">Recent Moods (7 Days)</Title>
           <List
             dataSource={recentMoods}
             renderItem={item => (
-              <List.Item>
+              <List.Item
+                style={{
+                  background: "rgba(255,255,255,0.25)",
+                  borderRadius: "12px",
+                  marginBottom: "8px",
+                  padding: "8px 12px",
+                  backdropFilter: "blur(6px)",
+                  border: "1px solid rgba(255,255,255,0.3)"
+                }}
+              >
                 <Text>{dayjs(item.date).format("MMM D")}</Text>
                 <Tag color={moodColor[item.mood]} style={{ marginLeft: 8 }}>
                   {item.mood}
@@ -106,8 +128,16 @@ export default function MoodsPage() {
           />
         </Card>
 
+        {/* Today's mood card */}
         <Card
-          style={{ flex: 1, backdropFilter: "blur(10px)", backgroundColor: "rgba(255,255,255,0.7)" }}
+          style={{
+            flex: 1,
+            borderRadius: "16px",
+            background: "rgba(255,255,255,0.3)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(255,255,255,0.4)",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.08)"
+          }}
           bordered={false}
         >
           <Title level={4} className="text-center mb-4">Today's Mood</Title>
@@ -128,6 +158,11 @@ export default function MoodsPage() {
           <Button
             type="primary"
             block
+            style={{
+              borderRadius: "12px",
+              background: "linear-gradient(to right, #4f46e5, #10b981)",
+              border: "none"
+            }}
             onClick={() => {
               if (!selectedMood) return message.warning("Please select a mood");
               saveMood(selectedMood);
