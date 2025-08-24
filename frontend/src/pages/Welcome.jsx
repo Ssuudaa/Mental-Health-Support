@@ -9,11 +9,12 @@ export default function WelcomePage() {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  const doctors = [
-    { name: "Dr. Alice Green", specialty: "Clinical Psychologist", avatar: "https://i.pravatar.cc/100?img=47" },
-    { name: "Dr. John Smith", specialty: "Therapist", avatar: "https://i.pravatar.cc/100?img=32" },
-    { name: "Dr. Maria Lopez", specialty: "Counselor", avatar: "https://i.pravatar.cc/100?img=12" },
-  ];
+ const doctors = [
+  { name: "Dr. Alice Green", specialty: "Clinical Psychologist", avatar: "/doc1.jpg" },
+  { name: "Dr. John Smith", specialty: "Therapist", avatar: "/doc2.jpg" },
+  { name: "Dr. Maria Lopez", specialty: "Counselor", avatar: "/doc3.jpg" },
+];
+
 
   const services = [
     { icon: <MedicineBoxOutlined style={{ fontSize: 22, color: "#4f46e5" }} />, title: "Online Therapy", desc: "Book sessions with professional doctors online." },
