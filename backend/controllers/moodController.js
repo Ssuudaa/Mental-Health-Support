@@ -8,7 +8,7 @@ exports.getMoods = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-
+//fffss
 exports.addMood = async (req, res) => {
   try {
     const { mood, notes } = req.body;
